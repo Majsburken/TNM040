@@ -1,17 +1,24 @@
 import './CountryInfo.css'
 
 function CountryInfo({country, maxArea, detailed}) {
-    console.log(country)
+    // console.log(country)
 
-    console.log(maxArea)
+    // console.log(maxArea)
 
     let ratio = country.area/maxArea;
     ratio = ratio * 100 + "%";
 
+    let roundedArea = country.area/1000000;
+    console.log(roundedArea)
+    roundedArea = Math.round(roundedArea*10)/10;
+    console.log(roundedArea)
+
+
     return (
-        <div style={{width:900, textAlign: 'left'}}>
-            <b>{country.name.common}</b> {country.area} km<sup>2</sup>
-            <div className="bar" style={{width:ratio}}></div>
+        <div className="boxes" >
+            
+            <b>{country.name.common}</b> {roundedArea} million km<sup>2</sup>
+            <div className="bar animatedBar" style={{width:ratio}}></div>
             {detailed &&  
                <>
             <p>Capital: {country.capital}</p> 

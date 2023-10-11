@@ -23,8 +23,15 @@ function App() {
 
   return (
     <>
+    <div id='body'>
+      <aside>
         {topFive.map((country) => <CountryInfo country={country} maxArea={maxArea} key = {country.cca3} detailed = {true}/>)}
+      </aside>
+    
+      <aside>
         {rest.map((country) => <CountryInfo country={country} maxArea={maxArea} key = {country.cca3} detailed = {false} />)}
+      </aside> 
+    </div> 
     </>
   )
 }
