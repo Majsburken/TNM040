@@ -7,14 +7,17 @@ function CountryInfo({country, maxArea, detailed}) {
 
     let ratio = country.area/maxArea;
     ratio = ratio * 100 + "%";
-    console.log("test")
 
     return (
         <div style={{width:900, textAlign: 'left'}}>
             <b>{country.name.common}</b> {country.area} km<sup>2</sup>
             <div className="bar" style={{width:ratio}}></div>
-            {detailed &&     
+            {detailed &&  
+               <>
             <p>Capital: {country.capital}</p> 
+            <p>Number of neighbouring countries: {country.borders.length}</p> 
+            <p>Independent: {country.independent ? 'Yes' : 'No'}</p>
+            </>
             }
 
         </div>
