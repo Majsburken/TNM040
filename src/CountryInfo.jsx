@@ -7,7 +7,7 @@ function CountryInfo({country, maxArea, detailed}) {
 
     let ratio = country.area/maxArea;
     ratio = ratio * 100 + "%";
-
+    console.log("test")
 
     return (
         <div style={{width:900, textAlign: 'left'}}>
