@@ -1,13 +1,22 @@
 import './CountryInfo.css'
 
-function CountryInfo({country}) {
-    /*console.log(data)*/
+function CountryInfo({country, maxArea, detailed}) {
+    console.log(country)
+
+    console.log(maxArea)
+
+    let ratio = country.area/maxArea;
+    ratio = ratio * 100 + "%";
 
 
     return (
-        <div>
-            <b>{country.name.common}</b> {country.area} m<sup>2</sup>
-            <div className="bar" style = {{width:10}} ></div>
+        <div style={{width:900, textAlign: 'left'}}>
+            <b>{country.name.common}</b> {country.area} km<sup>2</sup>
+            <div className="bar" style={{width:ratio}}></div>
+            {detailed &&     
+            <p>Capital: {country.capital}</p> 
+            }
+
         </div>
         
 
