@@ -2,6 +2,7 @@ import './App.css'
 import './CountryInfo.css'
 import countries from 'world-countries'
 import CountryInfo from './CountryInfo'
+import CountryDetails from './CountryDetails'
 import React, { useState } from "react";
 
 
@@ -66,12 +67,13 @@ function CountryList() {
 function App() {
 
 
-  return {
-    
-  }
+  return (
+    <div>
+
+    </div>
+  )
 
 }
-
 
 
 export default App
