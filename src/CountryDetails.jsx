@@ -5,7 +5,7 @@
 
 function CountryDetails() {
 
-
+  console.log("Hello?");
     return (
         <> 
         <h1>Hello World!</h1>

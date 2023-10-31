@@ -1,3 +1,5 @@
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
 import './CountryInfo.css'
 import countries from 'world-countries'
@@ -66,14 +68,18 @@ function CountryList() {
 
 function App() {
 
-
+//Varför sluttag på första route
   return (
-    <div>
-
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<CountryList />}></Route>  
+        <Route path="/Country" element={<CountryDetails />} />
+      </Routes>
+    </BrowserRouter>
   )
 
 }
 
-
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
 export default App
