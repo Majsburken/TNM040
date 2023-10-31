@@ -4,11 +4,8 @@ import './App.css'
 import './CountryInfo.css'
 import countries from 'world-countries'
 import CountryInfo from './CountryInfo'
-import CountryDetails from './CountryDetails'
 import React, { useState } from "react";
-
-
-
+import { useParams } from 'react-router'; 
 
 
 function CountryList() {
@@ -42,10 +39,11 @@ function CountryList() {
  const topFive = searchedCountries.slice(0,5)
  const rest = searchedCountries.slice(5,15)
 
+console.log(filteredSortedCountries);
 
  function getCountryByCca3(kod) {
-  let foundCountry = filteredSortedCountries.find((country) => country.cca3 == kod);
-  console.log(kod);
+  let foundCountry = filteredSortedCountries.find((country) => country.cca3 === kod);
+  console.log(foundCountry.cca3);
   return foundCountry;
  }
  
@@ -83,6 +81,21 @@ function App() {
   )
 
 }
+
+
+function CountryDetails() {
+
+  let {cca3} = useParams();
+  let gotCountry = getCountryByCca3(cca3);
+  console.log(gotCountry);
+    return (
+        <> 
+        <h1>{cca3}</h1>
+        <Link to= "/"><p>Ta mig hem!</p></Link>
+      </>
+    )
+  }
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);

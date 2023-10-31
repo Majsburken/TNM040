@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import './CountryInfo.css'
-import CountryDetails from './CountryDetails';
 
 function CountryInfo({country, maxArea, detailed}) {
 
