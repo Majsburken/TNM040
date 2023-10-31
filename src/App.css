@@ -41,7 +41,7 @@
   color: #888;
 }
 
-#body{
+#results{
   display: flex;
   flex-direction: row;
 }
@@ -49,4 +49,9 @@
 aside{
   display: flex;
   flex-direction: column;
+}
+
+#search {
+  width: 30vw;
+  
 }

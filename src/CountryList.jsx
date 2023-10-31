@@ -2,8 +2,13 @@ import './App.css'
 import './CountryInfo.css'
 import countries from 'world-countries'
 import CountryInfo from './CountryInfo'
+import React, { useState } from "react";
 
-function App() {
+
+
+
+
+function CountryList() {
   //sorterar alla länder från största till minsta area
   const sortedCountries = countries.toSorted((a, b) => b.area - a.area)
   //Tar bort antarctica
@@ -14,14 +19,38 @@ function App() {
   //Tar den största arean
   let maxArea = slicedfilteredSortedCountries[0].area
 
-  //Delar upp listan i 5 första och resten
-  const topFive = slicedfilteredSortedCountries.slice(0,5)
-  const rest = slicedfilteredSortedCountries.slice(5,15)
+ 
+  const matchSearch = country => {
+    const lowerCaseWord = country.name.common.toLowerCase();
+    const lowerCaseSearchString = searchString.toLowerCase();
+
+    return lowerCaseWord.indexOf(lowerCaseSearchString) === 0;
+  }
+
+  const [searchString, setSearchString] = useState("");
+
+  function changeInput(event) {
+     setSearchString(event.target.value);
+  }
+  
+  const searchedCountries = filteredSortedCountries.filter(matchSearch);
+
+ //Delar upp listan i 5 första och resten
+ const topFive = searchedCountries.slice(0,5)
+ const rest = searchedCountries.slice(5,15)
+
+ 
+
+
 
   //Går igenom alla länder, skickar in det i countryInfo, fem första detailed=true
   return (
     <>
-      <div id='body'>
+      <div>
+        <h1>Search Country 🌍</h1>
+        <input id ="search" type="text" placeholder="I'm a queencar" onChange={changeInput}/>
+      </div>
+      <div id='results'>
         <aside>
           {topFive.map((country) => <CountryInfo country={country} maxArea={maxArea} key = {country.cca3} detailed = {true}/>)}
         </aside>
@@ -33,5 +62,15 @@ function App() {
     </>
   )
 }
+
+
+function App() {
+
+  return {
+ 
+  }
+}
+
+
 
 export default App
