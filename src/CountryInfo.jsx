@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import './CountryInfo.css'
+import CountryDetails from './CountryDetails';
 
 function CountryInfo({country, maxArea, detailed}) {
 
@@ -10,22 +12,23 @@ function CountryInfo({country, maxArea, detailed}) {
     let roundedArea = Math.round(country.area/100000)/10;
 
     return (
-        <div className="boxes" >
-            
-            <b>{country.name.common}</b> {roundedArea} million km<sup>2</sup>
+        <Link to={"/Country/" + country.cca3}>
+            <div className="boxes" >
+                
+                <b>{country.name.common}</b> {roundedArea} million km<sup>2</sup>
 
-            <div className="bar" style={{width:ratio}}></div>
-            
-            {detailed &&  
-            <>
-                <p>Capital: {country.capital}</p> 
-                <p>Number of neighbouring countries: {country.borders.length}</p> 
-                <p>Independent: {country.independent ? 'Yes' : 'No'}</p>
-            </>
-            }
+                <div className="bar" style={{width:ratio}}></div>
+                
+                {detailed &&  
+                <>
+                    <p>Capital: {country.capital}</p> 
+                    <p>Number of neighbouring countries: {country.borders.length}</p> 
+                    <p>Independent: {country.independent ? 'Yes' : 'No'}</p>
+                </>
+                }
 
-        </div>
-    
+            </div>
+        </Link>
     )
   }
   

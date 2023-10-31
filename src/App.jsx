@@ -51,7 +51,7 @@ function CountryList() {
     <>
       <div>
         <h1>Search Country 🌍</h1>
-        <input id ="search" type="text" placeholder="I'm a queencar" onChange={changeInput}/>
+        <input id ="search" type="text" placeholder="I'm a queencar 👸🚗" onChange={changeInput}/>
       </div>
       <div id='results'>
         <aside>
@@ -73,7 +73,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<CountryList />}></Route>  
-        <Route path="/Country" element={<CountryDetails />} />
+        <Route path="/country/:cca3" component={CountryDetails} element={<CountryDetails />} />
       </Routes>
     </BrowserRouter>
   )
