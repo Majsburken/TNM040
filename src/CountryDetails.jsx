@@ -1,13 +1,12 @@
 import { Link, useParams } from "react-router-dom";
-
-
-
+import getCountryByCca3 from './App';
 
 
 function CountryDetails() {
 
   let {cca3} = useParams();
-  console.log("Hello?");
+  let gotCountry = getCountryByCca3(cca3);
+  console.log(gotCountry);
     return (
         <> 
         <h1>{cca3}</h1>

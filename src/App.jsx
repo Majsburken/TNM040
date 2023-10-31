@@ -42,9 +42,13 @@ function CountryList() {
  const topFive = searchedCountries.slice(0,5)
  const rest = searchedCountries.slice(5,15)
 
+
+ function getCountryByCca3(kod) {
+  let foundCountry = filteredSortedCountries.find((country) => country.cca3 == kod);
+  console.log(kod);
+  return foundCountry;
+ }
  
-
-
 
   //Går igenom alla länder, skickar in det i countryInfo, fem första detailed=true
   return (
