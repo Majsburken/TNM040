@@ -8,7 +8,7 @@ import React, { useState } from "react";
 
 
 
-function CountryList() {
+function App() {
   //sorterar alla länder från största till minsta area
   const sortedCountries = countries.toSorted((a, b) => b.area - a.area)
   //Tar bort antarctica
@@ -61,14 +61,6 @@ function CountryList() {
       </div> 
     </>
   )
-}
-
-
-function App() {
-
-  return {
- 
-  }
 }
 
 
