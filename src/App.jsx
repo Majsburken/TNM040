@@ -5,7 +5,50 @@ import './CountryInfo.css'
 import countries from 'world-countries'
 import CountryInfo from './CountryInfo'
 import React, { useState } from "react";
-import { useParams } from 'react-router'; 
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
+
+
+function App() {
+
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<CountryList />}/>  
+          <Route path="/country/:cca3" component={CountryDetails} element={<CountryDetails />}/>
+        </Routes>
+      </BrowserRouter>
+    )
+  }
+  
+  function CountryDetails() {
+  
+    let {cca3} = useParams();
+    let gotCountry = getCountryByCca3(cca3);
+    //console.log(gotCountry);
+    let borderCountries = gotCountry.borders.map((cca3) => getCountryByCca3(cca3));
+    const sortedCountries = countries.toSorted((a, b) => b.area - a.area)
+
+    console.log(sortedCountries[0].area);
+
+      return (
+          <> 
+          <h1>{cca3}</h1>
+          <Link to= "/"><p>Ta mig hem!</p></Link>
+
+          {borderCountries.map((country) => <CountryInfo country={country} maxArea={sortedCountries[0].area} key = {country.cca3} detailed = {false}/>)}
+
+
+        </>
+      )
+    }
+
+    function getCountryByCca3(kod) {
+      let foundCountry = countries.find((country) => country.cca3 === kod);
+      console.log(foundCountry.cca3);
+      return foundCountry;
+     }
+
 
 
 function CountryList() {
@@ -41,11 +84,7 @@ function CountryList() {
 
 console.log(filteredSortedCountries);
 
- function getCountryByCca3(kod) {
-  let foundCountry = filteredSortedCountries.find((country) => country.cca3 === kod);
-  console.log(foundCountry.cca3);
-  return foundCountry;
- }
+ 
  
 
   //Går igenom alla länder, skickar in det i countryInfo, fem första detailed=true
@@ -68,33 +107,7 @@ console.log(filteredSortedCountries);
   )
 }
 
-function App() {
 
-//Varför sluttag på första route
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<CountryList />}></Route>  
-        <Route path="/country/:cca3" component={CountryDetails} element={<CountryDetails />} />
-      </Routes>
-    </BrowserRouter>
-  )
-
-}
-
-
-function CountryDetails() {
-
-  let {cca3} = useParams();
-  let gotCountry = getCountryByCca3(cca3);
-  console.log(gotCountry);
-    return (
-        <> 
-        <h1>{cca3}</h1>
-        <Link to= "/"><p>Ta mig hem!</p></Link>
-      </>
-    )
-  }
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -53,5 +53,13 @@ aside{
 
 #search {
   width: 30vw;
-  
+  height: 25px;
+  font-size: larger;
+  border-radius: 10px;
+  border: 3px;
 }
+
+.link_One {
+  color: white;
+}
+
