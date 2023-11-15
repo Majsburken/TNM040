@@ -1,20 +1,18 @@
-.bar{
+.bar {
     height: 10px;
-    background-color: hsl(212, 67%, 38%);
+    background-color: hsl(184, 100%, 50%);
     border-radius: 10px;
     margin-top: 10px;
 }
 
-.boxes{
-   width: 30vw;
-   line-height: 10px;
-   text-align: left;
-   border-style: solid;
-   padding: 10px;
-   margin: 10px;
-   border-color: rgba(173, 216, 230, 0.586);
-   border-radius: 10px;
-   color: white;
+.boxes {
+    width: 30vw;
+    line-height: 10px;
+    text-align: left;
+    border-style: solid;
+    padding: 10px;
+    margin: 10px;
+    border-color: rgba(173, 216, 230, 0.586);
+    border-radius: 10px;
+    color: white;
 }
-
-
